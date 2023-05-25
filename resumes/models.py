@@ -23,3 +23,7 @@ class Resume(models.Model):
 class ResumeOwner(models.Model):
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = [["resume", "owner"]]
+
