@@ -18,12 +18,6 @@ class Resume(models.Model):
     title = models.CharField(max_length=64)
     phone = models.CharField(max_length=32)
     email = models.EmailField()
-
-
-class ResumeOwner(models.Model):
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = [["resume", "owner"]]
-
+    owner = models.ForeignKey(
+        get_user_model(), on_delete=models.CASCADE, null=True, blank=True
+    )
