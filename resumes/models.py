@@ -5,6 +5,7 @@ from resumes.constants import RESUME_STATUSES, RESUME_CLOSE_STATUS, GRADES
 
 
 class Resume(models.Model):
+    id = models.IntegerField(primary_key=True)
     status = models.CharField(
         max_length=32, choices=RESUME_STATUSES, default=RESUME_CLOSE_STATUS
     )
