@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,27 +14,74 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Resume',
+            name="Resume",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('status', models.CharField(choices=[('RESUME_OPEN_STATUS', 'Open'), ('RESUME_CLOSE_STATUS', 'Close')], default='RESUME_CLOSE_STATUS', max_length=32)),
-                ('grade', models.CharField(choices=[('GRADE_JUNIOR', 'Junior'), ('GRADE_MIDDLE', 'Middle'), ('GRADE_SENIOR', 'Senior')], max_length=32)),
-                ('specialty', models.TextField()),
-                ('salary', models.IntegerField()),
-                ('education', models.TextField()),
-                ('experience', models.TextField()),
-                ('portfolio', models.TextField()),
-                ('title', models.CharField(max_length=64)),
-                ('phone', models.CharField(max_length=32)),
-                ('email', models.EmailField(max_length=254)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("RESUME_OPEN_STATUS", "Open"),
+                            ("RESUME_CLOSE_STATUS", "Close"),
+                        ],
+                        default="RESUME_CLOSE_STATUS",
+                        max_length=32,
+                    ),
+                ),
+                (
+                    "grade",
+                    models.CharField(
+                        choices=[
+                            ("GRADE_JUNIOR", "Junior"),
+                            ("GRADE_MIDDLE", "Middle"),
+                            ("GRADE_SENIOR", "Senior"),
+                        ],
+                        max_length=32,
+                    ),
+                ),
+                ("specialty", models.TextField()),
+                ("salary", models.IntegerField()),
+                ("education", models.TextField()),
+                ("experience", models.TextField()),
+                ("portfolio", models.TextField()),
+                ("title", models.CharField(max_length=64)),
+                ("phone", models.CharField(max_length=32)),
+                ("email", models.EmailField(max_length=254)),
             ],
         ),
         migrations.CreateModel(
-            name='ResumeOwner',
+            name="ResumeOwner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('resume', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='resumes.resume')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "resume",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="resumes.resume"
+                    ),
+                ),
             ],
         ),
     ]
